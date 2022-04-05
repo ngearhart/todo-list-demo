@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO List Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div>
+
+    <h1>TODO List</h1>
+
+    <!-- Should we show something for an empty list? -->
+    <form method='POST'>
+        <input type='hidden' name='_complete' />
+        <ul>
+            {% for item in incomplete_items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="{{ item[0] }}" onchange="submit()" />
+                        {{ item[1] }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for item in completed_items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="{{ item[0] }}" checked onchange="submit()" />
+                        {{ item[1] }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+
+    <form method='POST'>
+        <input type='hidden' name='_create' />
+        <label for="text">Create a New Item: </label>
+        <input type="text" name="text"></input>
+        <button type="submit">Save</button>
+    </form>
+
+</div>
+
+</body>
+</html>
