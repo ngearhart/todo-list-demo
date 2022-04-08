@@ -15,6 +15,7 @@
     <!-- Should we show something for an empty list? -->
     <form method='POST'>
         <input type='hidden' name='_complete' />
+        Incomplete tasks:
         <ul>
             {% for item in incomplete_items %}
                 <li>
@@ -25,6 +26,7 @@
                 </li>
             {% endfor %}
         </ul>
+        Completed tasks:
         <ul>
             {% for item in completed_items %}
                 <li>
