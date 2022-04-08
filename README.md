@@ -9,4 +9,4 @@ Demonstration Project for HackPSU 2022 Workshop.
 
 ## Running
 
-1. Run `python main.py`.
+1. Run `python app.py`.
