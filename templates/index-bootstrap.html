@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}TODO List Demo{% endblock %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+{% endblock %}
+{% block content %}
+<div>
+
+    <h1>TODO List</h1>
+
+    <!-- Should we show something for an empty list? -->
+    <form method='POST'>
+        <input type='hidden' name='_complete' />
+        Incomplete tasks:
+        <ul>
+            {% for item in incomplete_items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="{{ item[0] }}" onchange="submit()" />
+                        {{ item[1] }} - {{ item[3] }}
+                    </label>
+                </li>
+            {% endfor %}
+            {% if not incomplete_items|length %}
+            <li>No incomplete tasks found!</li>
+            {% endif %}
+        </ul>
+        Completed tasks:
+        <ul>
+            {% for item in completed_items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="{{ item[0] }}" checked onchange="submit()" />
+                        {{ item[1] }}
+                    </label>
+                </li>
+            {% endfor %}
+            {% if not completed_items|length %}
+            <li>No completed tasks found!</li>
+            {% endif %}
+        </ul>
+    </form>
+
+    <form method='POST'>
+        <input type='hidden' name='_create' />
+        <label for="text">Create a New Item: </label>
+        <input type="text" name="text"></input>
+        <button type="submit">Save</button>
+    </form>
+
+</div>
+{% endblock %}
