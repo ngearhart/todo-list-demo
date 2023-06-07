@@ -28,7 +28,7 @@ def create_list_item(name):
         con.commit()
 
 
-def toggle_list_item(id: int | str):
+def toggle_list_item(id):
     with sqlite3.connect(DB_FILE_NAME) as con:
         cur = con.cursor()
         cur.execute("UPDATE items SET done = ((done | 1) - (done & 1)) WHERE id = ?", (id,))
