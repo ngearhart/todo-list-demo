@@ -38,5 +38,3 @@ def index():
 if __name__ == '__main__':
     data.init()
     app.run(debug=True)
-
-# test
