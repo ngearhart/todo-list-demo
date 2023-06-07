@@ -35,6 +35,9 @@ def index():
     incomplete_items = [item for item in items if item[2] == 0]
     return render_template('index.html', completed_items=completed_items, incomplete_items=incomplete_items)
 
-if __name__ == '__main__':
+@app.before_request
+def init():
     data.init()
+
+if __name__ == '__main__':
     app.run(debug=True)
