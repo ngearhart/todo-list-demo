@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request
 import data
 import logging
-# from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -33,8 +33,8 @@ def index():
     logger.info(items)
     completed_items = [item for item in items if item[2] == 1]
     incomplete_items = [item for item in items if item[2] == 0]
-    return render_template('index.html', completed_items=completed_items, incomplete_items=incomplete_items)
-    # return render_template('index-bootstrap.html', completed_items=completed_items, incomplete_items=incomplete_items)
+    # return render_template('index.html', completed_items=completed_items, incomplete_items=incomplete_items)
+    return render_template('index-bootstrap.html', completed_items=completed_items, incomplete_items=incomplete_items)
 
 @app.before_request
 def init():
